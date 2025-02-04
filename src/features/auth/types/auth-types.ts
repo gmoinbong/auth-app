@@ -7,14 +7,21 @@ export interface ErrorResponseData {
     errors?: { msg: string }[];
 }
 
-export type AuthCredentials = {
+export type LoginCredentials = {
     name: string
     username: string
     password: string
 }
 
+export type RegisterCredentials = {
+    name: string
+    username: string
+    password: string
+    confirmPassword: string;
+}
+
 export type ApiResponse<T> = {
-    data?: T;
+    data?: T | null;
     error?: string
 }
 

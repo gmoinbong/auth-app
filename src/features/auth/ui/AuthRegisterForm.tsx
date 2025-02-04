@@ -1,28 +1,31 @@
-"use client"
-import { RegisterForm } from '@/shared/ui/components/Form/RegisterForm/RegisterForm'
-import React, { FC } from 'react'
-import { RegisterFormValues, useRegisterForm } from '../model/use-register-form'
-import { useRegisterFormStore } from '../model/store/register-form'
-import { AuthService } from '../api/auth-api'
+'use client'
+import { RegisterForm } from '@/shared/ui/components/Form/RegisterForm/RegisterForm';
+import React, { FC } from 'react';
+import { useRegisterForm } from '../model/use-register-form';
+import { useRegister } from '../model/use-register';
+import { redirect } from 'next/navigation';
 
 export const AuthRegisterForm: FC = () => {
-    const form = useRegisterForm()
-    const { isPending, setPending } = useRegisterFormStore()
+    const form = useRegisterForm();
+    const { isPending, handleRegister, error, data } = useRegister();
 
-    const onSubmit = async (values: RegisterFormValues) => {
-        try {
-            setPending(true)
-            console.log(values);
-            const result = await AuthService.register(values)
-            console.log(result);
-        } catch (error) {
-            console.log(error);
-        } finally {
-            setPending(false)
-        }
+    if (data) {
+        setTimeout(() =>
+            redirect('/api/auth/login'),
+            3000)
     }
 
     return (
-        <RegisterForm onSubmit={onSubmit} isPending={isPending} form={form} />
-    )
-}
+        <div className="space-y-4">
+            <RegisterForm form={form} onSubmit={handleRegister} isPending={isPending} />
+            {error && (
+                <div className="text-red-500 text-sm mt-2 p-2 bg-red-50 rounded-md">
+                    {error}
+                </div>)}
+            {data && (
+                <div className=' bg-green-50 rounded-md'>
+                    <p className='text-green-500 text-sm mt-2 p-2'>{data}</p>
+                </div>)}
+        </div>
+    );
+};
