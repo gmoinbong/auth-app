@@ -23,7 +23,7 @@ The application connects to the following API: [auth-api](https://github.com/Vee
 - Server-Side Rendering (SSR) support
 - Logout functionality
 - ESLint and Prettier setup
-- GitHub Actions configured for CI/CD
+- Circle configured for CI/CD
 
 ## Installation
 ```sh
