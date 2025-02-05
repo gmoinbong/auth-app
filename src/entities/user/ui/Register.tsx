@@ -9,7 +9,7 @@ export const Register: FC = () => {
 
     if (registerProps.data) {
         setTimeout(() =>
-            redirect('/api/auth/login'),
+            redirect('/api/login'),
             3000)
     }
 
