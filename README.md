@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Authentication Application (auth-app)
 
-## Getting Started
+## Overview
+This project is a small authentication and authorization application built with Next.js, Tailwind CSS, and Shadcn. It connects to an existing authentication API to manage user login and registration.
 
-First, run the development server:
+## Tech Stack
+- **Framework**: Next.js (with TurboPack)
+- **Styling**: Tailwind CSS, Shadcn
+- **State Management**: Zustand
+- **Form Handling & Validation**: React Hook Form, Zod
+- **API Requests**: Axios
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## API Repository
+The application connects to the following API: [auth-api](https://github.com/Veel-IT/auth-api)
+
+## Project Link:
+[auth-app](https://auth-app-iota-ten.vercel.app/)
+
+## Features
+- User authentication (login & registration forms)
+- Form validation using React Hook Form & Zod
+- Authentication guard to protect pages
+- Server-Side Rendering (SSR) support
+- Logout functionality
+- ESLint and Prettier setup
+- GitHub Actions configured for CI/CD
+
+## Installation
+```sh
+# Clone the repository
+git clone https://github.com/your-repo/auth-app.git
+cd auth-app
+
+# Install dependencies
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Development
+To start the development server, run:
+```sh
+npm run dev
+```
+This will start the Next.js application in development mode.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build and Deployment
+To create a production build, run:
+```sh
+npm run build
+```
+To start the production server, run:
+```sh
+npm run start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Linting and Formatting
+To run ESLint:
+```sh
+npm run lint
+```
+The project also includes Husky and lint-staged for pre-commit hooks.
 
-## Learn More
+## Authentication Flow
+1. User accesses the application.
+2. A guard checks if the user is authenticated.
+   - If authenticated, the user is redirected to the home page.
+   - If not authenticated, the user is redirected to the login page.
+3. Users can log in or register using forms.
+4. On successful login, authentication tokens are stored.
+5. Users can log out from the home page.
 
-To learn more about Next.js, take a look at the following resources:
+## Project Goals
+- Demonstrate form handling
+- Show a well-structured project setup
+- Implement state management effectively
+- Utilize UI libraries and custom UI components
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Extra Features Implemented
+- Next.js SSR support
+- Authentication flow that does not affect SSR
+- Configured ESLint and Prettier
+- GitHub Actions for automated linting and testing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

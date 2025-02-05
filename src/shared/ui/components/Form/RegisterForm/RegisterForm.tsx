@@ -21,8 +21,8 @@ type RegisterFormProps = {
 export const RegisterForm = ({ form, onSubmit, isPending }: RegisterFormProps) => {
 
     return (
-        <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        <Form  {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 flex flex-col justify-center align-middle">
                 <FormField
                     control={form.control}
                     name="name"
@@ -30,7 +30,7 @@ export const RegisterForm = ({ form, onSubmit, isPending }: RegisterFormProps) =
                         <FormItem>
                             <FormLabel>Name</FormLabel>
                             <FormControl>
-                                <Input placeholder="Enter your name" {...field} />
+                                <Input className='border-blue-300' placeholder="Enter your name" {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -67,7 +67,7 @@ export const RegisterForm = ({ form, onSubmit, isPending }: RegisterFormProps) =
                     name="confirmPassword"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>Confirm Password</FormLabel>
+                            <FormLabel >Confirm Password</FormLabel>
                             <FormControl>
                                 <Input type="password" placeholder="Confirm your password" {...field} />
                             </FormControl>
@@ -75,7 +75,7 @@ export const RegisterForm = ({ form, onSubmit, isPending }: RegisterFormProps) =
                         </FormItem>
                     )}
                 />
-                <Button type="submit">
+                <Button type="submit" className='w-6/12' variant="default">
                     {isPending ? 'Submitting...' : 'Submit'}
                 </Button>
             </form>
