@@ -23,16 +23,16 @@ jobs:
       - store_artifacts:
           path: ~/artifacts
           destination: node-build
-  deploy:
-    docker:
-      - image: cimg/base:stable
-    steps:
-      - run:
+deploy:
+  docker:
+    - image: cimg/base:stable
+  steps:
+    - run:
         name: Install Vercel CLI
         command: npm install -g vercel
-      - run:
-        name: Deploy to Vercel  
-                command: vercel --token $VERCEL_TOKEN --prod
+    - run:
+        name: Deploy to Vercel
+        command: "vercel --token $VERCEL_TOKEN --prod"
 workflows:
   build:
     jobs:
