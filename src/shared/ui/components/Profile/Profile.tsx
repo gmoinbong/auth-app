@@ -1,20 +1,16 @@
-import { AuthLogoutForm } from '@/features/auth/ui/AuthLogoutForm'
 import { FC } from 'react'
 
-// type Props = {
-//     name: string;
-//     username: string;
-//     email: string;
-// }
+type Props = {
+    username?: string;
+    id?: string;
+}
 
-export const Profile: FC = () => {
+export const Profile: FC<Props> = ({ username, id }) => {
     return (
         <div>
             <h1>Profile</h1>
-            <p>id: </p>
-            <p>Username</p>
-            Profile
-            <AuthLogoutForm />
+            <p>{id} </p>
+            <p>{username}</p>
         </div>
     )
 }

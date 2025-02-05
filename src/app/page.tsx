@@ -1,19 +1,20 @@
-import { AuthLogoutForm } from '@/features/auth/ui/AuthLogoutForm'
-import { cookies } from 'next/headers'
-import { redirect } from 'next/navigation'
+import { getAuthToken } from '@/entities/user/lib/auth';
+import { User } from '@/entities/user/ui';
+import { redirect } from 'next/navigation';
 
-export default async function Home() {
-  const token = (await cookies()).get('auth_token')?.value
+export default async function ProfilePage() {
+  const token = await getAuthToken();
 
   if (!token) {
-    redirect('/api/auth/login')
+    redirect('/login');
+    return null;
   }
 
-
-  return (
-    <div>
-      <h1>Welcome </h1>
-      <AuthLogoutForm />
-    </div>
-  )
+  try {
+    return <User token={token} />;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  } catch (error) {
+    redirect('/api/login');
+    return null;
+  }
 }

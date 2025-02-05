@@ -1,17 +1,16 @@
 {
     "extends": [
         "next",
-        "plugin:prettier/recommended"
+        "next/core-web-vitals",
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
+    "plugins": [
+        "react",
+        "prettier"
     ],
     "rules": {
-        "prettier/prettier": [
-            "error"
-        ],
-        "import/order": [
-            "error",
-            {
-                "newlines-between": "always"
-            }
-        ]
+        "prettier/prettier": "error",
+        "no-unused-vars": "warn"
     }
 }

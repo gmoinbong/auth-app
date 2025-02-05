@@ -7,7 +7,7 @@ import {
     ErrorResponseData,
     LoginCredentials,
     RegisterCredentials,
-} from "../types/auth-types";
+} from "../../../features/auth/types/auth-types";
 
 export class AuthService {
     static async login(credentials: LoginCredentials): Promise<ApiResponse<IAuthResponse>> {

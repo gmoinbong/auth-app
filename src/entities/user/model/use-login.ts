@@ -1,6 +1,6 @@
 import { useRouter } from "next/navigation";
-import { useLoginFormStore } from "./store/login-form";
-import { LoginFormValues } from "./use-login-form";
+import { useLoginFormStore } from "./store/login-form-store";
+import { LoginFormValues } from "../../../features/auth/model/use-login-form";
 
 export const useLogin = () => {
     const { isPending, setPending, setError } = useLoginFormStore();
@@ -8,7 +8,7 @@ export const useLogin = () => {
 
     const handleLogin = async (values: LoginFormValues) => {
         try {
-            const response = await fetch('/api/login', {
+            const response = await fetch('/api/auth/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -17,7 +17,6 @@ export const useLogin = () => {
             });
 
             const result = await response.json();
-            console.log(result);
 
             if (!response.ok) {
                 throw new Error(result.message || 'Login failed');

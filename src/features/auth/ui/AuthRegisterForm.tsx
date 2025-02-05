@@ -1,19 +1,17 @@
 'use client'
 import { RegisterForm } from '@/shared/ui/components/Form/RegisterForm/RegisterForm';
 import React, { FC } from 'react';
-import { useRegisterForm } from '../model/use-register-form';
-import { useRegister } from '../model/use-register';
-import { redirect } from 'next/navigation';
+import { RegisterFormValues, useRegisterForm } from '../model/use-register-form';
 
-export const AuthRegisterForm: FC = () => {
+type Props = {
+    handleRegister: (values: RegisterFormValues) => void;
+    error: string | undefined;
+    data: string | undefined;
+    isPending: boolean;
+}
+
+export const AuthRegisterForm: FC<Props> = ({ handleRegister, error, data, isPending }) => {
     const form = useRegisterForm();
-    const { isPending, handleRegister, error, data } = useRegister();
-
-    if (data) {
-        setTimeout(() =>
-            redirect('/api/auth/login'),
-            3000)
-    }
 
     return (
         <div className="space-y-4">

@@ -1,4 +1,4 @@
-import { AuthService } from "@/features/auth/api/auth-api";
+import { AuthService } from "@/entities/user/api/auth-api";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
@@ -19,6 +19,7 @@ export async function POST(req: NextRequest) {
         });
 
         return response;
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
         return NextResponse.json(
             { message: 'Internal Server Error' },

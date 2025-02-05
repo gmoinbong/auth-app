@@ -1,12 +1,17 @@
 'use client'
 import { LoginForm } from '@/shared/ui'
 import React, { FC } from 'react'
-import { useLoginForm } from '../model/use-login-form'
-import { useLogin } from '../model/use-login'
+import { LoginFormValues, useLoginForm } from '../model/use-login-form'
 
-export const AuthLoginForm: FC = () => {
+
+type Props = {
+    handleLogin: (values: LoginFormValues) => void;
+    isPending?: boolean;
+    error: string | undefined;
+}
+
+export const AuthLoginForm: FC<Props> = ({ handleLogin, isPending, error }) => {
     const form = useLoginForm()
-    const { isPending, handleLogin, error } = useLogin()
 
     return (
         <div className="space-y-4">

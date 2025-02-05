@@ -1,7 +1,7 @@
 import { AuthService } from "../api/auth-api";
-import { ApiResponse } from "../types/auth-types";
-import { useRegisterFormStore } from "./store/register-form";
-import { RegisterFormValues } from "./use-register-form";
+import { ApiResponse } from "../../../features/auth/types/auth-types";
+import { useRegisterFormStore } from "./store/register-form-store";
+import { RegisterFormValues } from "../../../features/auth/model/use-register-form";
 
 export const useRegister = () => {
     const { isPending, setPending, setError, setData } = useRegisterFormStore();
@@ -10,6 +10,7 @@ export const useRegister = () => {
         setError(undefined);
         setData(undefined);
         setPending(true);
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { confirmPassword, ...registrationData } = values;
 
         try {
@@ -18,7 +19,7 @@ export const useRegister = () => {
             if (result.error) {
                 setError(result.error);
             } else {
-                setData(result.data);
+                setData(result.data as string);
             }
 
             return result.data;

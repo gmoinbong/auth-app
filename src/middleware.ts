@@ -1,13 +1,13 @@
 import { NextResponse, type NextRequest } from 'next/server'
 
 const PUBLIC_ROUTES = new Set([
-    '/auth/login',
-    '/auth/register',
+    '/api/auth/login',
+    '/api/auth/register'
 ])
 
 const ALLOWED_API_ROUTES = new Set([
-    '/api/auth/login',
-    '/api/auth/register'
+    '/auth/login',
+    '/auth/register',
 ])
 
 export async function middleware(request: NextRequest) {
@@ -28,12 +28,12 @@ export async function middleware(request: NextRequest) {
     const isPublicRoute = PUBLIC_ROUTES.has(pathname)
 
     if (!session && !isPublicRoute) {
-        const loginUrl = new URL('/api/auth/login', request.url)
+        const loginUrl = new URL('/api/login', request.url)
         return NextResponse.redirect(loginUrl)
     }
 
     if (session && isPublicRoute) {
-        const redirectUrl = pathname === '/api/auth/login'
+        const redirectUrl = pathname === '/api/login'
             ? new URL('/', request.url)
             : new URL('/profile', request.url)
 
