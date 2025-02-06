@@ -1,5 +1,5 @@
 import { isLoggedIn } from '@/entities/user/lib/auth'
-import { Login } from '@/entities/user/ui'
+import { LoginPage as Login } from '@/entities/user/ui'
 import { redirect } from 'next/navigation'
 
 export default async function LoginPage() {
@@ -8,9 +8,6 @@ export default async function LoginPage() {
   }
 
   return (
-    <div>
-      <h1>Login</h1>
       <Login />
-    </div>
   )
 }

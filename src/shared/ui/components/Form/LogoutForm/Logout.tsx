@@ -8,7 +8,7 @@ interface LogoutProps {
 
 export const LogoutForm: FC<LogoutProps> = ({ onLogout }) => {
     return (
-        <Button variant='outline' onClick={onLogout}>
+        <Button variant='default' className='w-16' onClick={onLogout}>
             Logout
         </Button>
     )

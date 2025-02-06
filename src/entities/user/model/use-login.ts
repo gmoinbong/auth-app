@@ -1,16 +1,15 @@
 import { useRouter } from "next/navigation";
 import { useLoginFormStore } from "./store/login-form-store";
-import { LoginFormValues } from "../../../features/auth/model/use-login-form";
+import { LoginFormValues } from "@/features/auth/hooks/use-login-form";
 
 export const useLogin = () => {
     const { isPending, setPending, setError } = useLoginFormStore();
     const router = useRouter()
 
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || '';
 
     const handleLogin = async (values: LoginFormValues) => {
         try {
-            const response = await fetch(`${apiUrl}/api/auth/login`, {
+            const response = await fetch('/api/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

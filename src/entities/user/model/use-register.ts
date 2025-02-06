@@ -1,7 +1,7 @@
 import { AuthService } from "../api/auth-api";
 import { ApiResponse } from "../../../features/auth/types/auth-types";
 import { useRegisterFormStore } from "./store/register-form-store";
-import { RegisterFormValues } from "../../../features/auth/model/use-register-form";
+import { RegisterFormValues } from "@/features/auth/hooks/use-register-form";
 
 export const useRegister = () => {
     const { isPending, setPending, setError, setData } = useRegisterFormStore();

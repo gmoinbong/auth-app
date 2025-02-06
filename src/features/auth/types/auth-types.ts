@@ -25,7 +25,3 @@ export type ApiResponse<T> = {
     error?: string
 }
 
-export type UserProfile = {
-    id: string;
-    username: string;
-}

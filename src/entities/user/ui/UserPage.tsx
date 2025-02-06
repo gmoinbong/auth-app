@@ -7,7 +7,7 @@ interface UserProps {
     token: string | null;
 }
 
-export const User: FC<UserProps> = ({ token }) => {
+export const UserPage: FC<UserProps> = ({ token }) => {
     const { userData, isLoading, error } = useFetchUser(token);
 
     if (isLoading) return <div>Loading...</div>;
@@ -15,11 +15,9 @@ export const User: FC<UserProps> = ({ token }) => {
     if (error) return <div>Error: {error}</div>;
 
     return (
-        <div>
-            <Profile
-                id={userData.id}
-                username={userData.username}
-            />
-        </div>
+        <Profile
+            id={userData.id}
+            username={userData.username}
+        />
     );
 };

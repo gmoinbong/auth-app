@@ -1,6 +1,6 @@
 import { getAuthToken } from '@/entities/user/lib/auth';
-import { User } from '@/entities/user/ui';
-import { Logout } from '@/entities/user/ui/Logout';
+import { UserPage } from '@/entities/user/ui';
+import { LogoutPage } from '@/entities/user/ui/LogoutPage';
 import { redirect } from 'next/navigation';
 
 export default async function ProfilePage() {
@@ -12,13 +12,13 @@ export default async function ProfilePage() {
   }
 
   try {
-    return (<>
-      <User token={token} />
-      <Logout />
-    </>)
+    return (<div className='flex flex-col align-middle items-center justify-center h-screen'>
+      <UserPage token={token} />
+      <LogoutPage />
+    </div>)
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
-    redirect('/api/login');
+    redirect('/login');
     return null;
   }
 }

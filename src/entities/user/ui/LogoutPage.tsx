@@ -3,7 +3,7 @@ import { AuthLogoutForm } from '@/features/auth/ui'
 import React, { FC } from 'react'
 import { useLogout } from '../model/use-logout'
 
-export const Logout: FC = () => {
+export const LogoutPage: FC = () => {
     const handleLogout = useLogout()
 
     return (

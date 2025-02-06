@@ -1,7 +1,7 @@
 'use client'
 import { RegisterForm } from '@/shared/ui/components/Form/RegisterForm/RegisterForm';
 import React, { FC } from 'react';
-import { RegisterFormValues, useRegisterForm } from '../model/use-register-form';
+import { RegisterFormValues, useRegisterForm } from '../hooks/use-register-form';
 
 type Props = {
     handleRegister: (values: RegisterFormValues) => void;

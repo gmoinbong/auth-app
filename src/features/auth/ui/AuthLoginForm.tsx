@@ -1,7 +1,7 @@
 'use client'
 import { LoginForm } from '@/shared/ui'
 import React, { FC } from 'react'
-import { LoginFormValues, useLoginForm } from '../model/use-login-form'
+import { LoginFormValues, useLoginForm } from '../hooks/use-login-form';
 
 
 type Props = {
@@ -19,12 +19,9 @@ export const AuthLoginForm: FC<Props> = ({ handleLogin, isPending, error }) => {
                 form={form}
                 onSubmit={handleLogin}
                 isPending={isPending}
+                error={error}
             />
-            {error && (
-                <div className="text-red-500 text-sm mt-2 p-2 bg-red-50 rounded-md">
-                    {error}
-                </div>
-            )}
+
         </div>
     )
 }
